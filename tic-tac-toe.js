@@ -1,6 +1,5 @@
 var boxes;
 var message;
-var win_state =[[0,1,2], [3,4,5], [6,7,8], [0,4,8], [1,4,7], [0,3,6], [2,5,8], [2,4,6]];
 var change_turn = true;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -26,17 +25,42 @@ window.addEventListener("DOMContentLoaded", () => {
                     change_turn = true;
                 }
             }
+            findwinner(boxes, message);
         });//end click event
 
         el.addEventListener("mouseover", () =>{
             el.classList.add("hover");
-        });
+        });//end mouseover
 
         el.addEventListener("mouseout", () =>{
             el.classList.remove("hover");
-        });
-    });
-});
+        });//end mouseout
+    });//end for each box
+});// end document loading
 
+const findwinner = function(box, mess_box){
+    if(box[0].innerHTML===box[1].innerHTML && box[1].innerHTML===box[2].innerHTML){
+        win_message(mess_box, box[0].innerHTML);
+    }else if(box[3].innerHTML===box[4].innerHTML && box[4].innerHTML===box[5].innerHTML){
+        win_message(mess_box, box[3].innerHTML);
+    }else if(box[6].innerHTML===box[7].innerHTML && box[7].innerHTML===box[8].innerHTML){
+        win_message(mess_box, box[6].innerHTML);
+    }else if(box[0].innerHTML===box[3].innerHTML && box[3].innerHTML===box[6].innerHTML){
+        win_message(mess_box, box[0].innerHTML);
+    }else if(box[1].innerHTML===box[4].innerHTML && box[4].innerHTML===box[7].innerHTML){
+        win_message(mess_box, box[1].innerHTML);
+    }else if(box[2].innerHTML===box[5].innerHTML && box[5].innerHTML===box[8].innerHTML){
+        win_message(mess_box, box[2].innerHTML);
+    }else if(box[0].innerHTML===box[4].innerHTML && box[4].innerHTML===box[8].innerHTML){
+        win_message(mess_box, box[0].innerHTML);
+    }else if(box[2].innerHTML===box[4].innerHTML && box[4].innerHTML===box[6].innerHTML){
+        win_message(mess_box, box[2].innerHTML);
+    }
+};//end winner check
+
+const win_message = function(messagebox, X_O){
+    messagebox.setAttribute("class", "you-won");
+    messagebox.innerHTML = `Congratulations! ${X_O} is the Winner!`;
+}; // end display winner message
 
 
