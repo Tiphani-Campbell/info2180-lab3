@@ -26,8 +26,16 @@ window.addEventListener("DOMContentLoaded", () => {
                     change_turn = true;
                 }
             }
-    })
-})
+        });//end click event
+
+        el.addEventListener("mouseover", () =>{
+            el.classList.add("hover");
+        });
+
+        el.addEventListener("mouseout", () =>{
+            el.classList.remove("hover");
+        });
+    });
 });
 
 
