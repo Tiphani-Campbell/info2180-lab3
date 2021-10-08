@@ -36,6 +36,16 @@ window.addEventListener("DOMContentLoaded", () => {
             el.classList.remove("hover");
         });//end mouseout
     });//end for each box
+
+    let button = document.querySelector("button");
+    button.addEventListener("click", () => {
+        boxes.forEach(el =>{
+            el.setAttribute("class", "square");
+            el.innerHTML="";
+        });
+        message.innerHTML="Move your mouse over a square and click to play an X or an O.";
+        message.classList.remove("you-won");
+    });
 });// end document loading
 
 const findwinner = function(box, mess_box){
